@@ -1,0 +1,25 @@
+@import '../../scss/variables.scss';
+.user-profile-container {
+    height: 100%;
+    margin: 5em;
+    display: flex;
+    p {
+        color: $primary;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    .user-profile-form {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .row {
+            display: flex;
+            .input-field {
+                margin: 2em;
+            }
+        }
+    }
+
+}

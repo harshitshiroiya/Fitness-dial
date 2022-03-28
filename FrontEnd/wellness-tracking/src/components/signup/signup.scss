@@ -1,0 +1,25 @@
+@import '../../scss/variables.scss';
+.signup-container {
+    .signup-form {
+        margin: 3em;
+    }
+  .signup-inputs {
+    box-shadow: 0 0 10px black;
+    display: flex;
+    width: 50%;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2em;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: white;
+    .text-input {
+      margin: 1em;
+    }
+    p {
+      color: $primary;
+      cursor: pointer;
+    }
+  }
+}

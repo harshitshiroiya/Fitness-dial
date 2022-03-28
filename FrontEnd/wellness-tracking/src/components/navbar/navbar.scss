@@ -1,0 +1,69 @@
+@import '../../scss/variables.scss';
+$sidebar-bg-color: white !important;
+$submenu-bg-color: $primary !important;
+$sidebar-width: 300px !important;
+@import "react-pro-sidebar/dist/scss/styles.scss";
+
+.pro-sidebar {
+    min-height: 100vh;
+    border-right: 1px solid;
+}
+
+.pro-sidebar-header {
+  background-color: #36b4db;
+}
+
+.pro-item-content {
+  padding: 10px;
+  color: black;
+}
+
+.navbar-item.--selected {
+  .pro-item-content {
+    background-color: $primary;
+    color: white;
+    border-radius: 10px;
+  }
+}
+
+.footer-buttons {
+    padding: 15px;
+}
+// nav {
+//     display: flex;
+//     width: 100%;
+    
+    
+
+//     .left-pane {
+//         display: flex;
+//         .fitness-dial-logo {
+//             display: flex;
+//             align-items: center;
+//             padding-left: 1em;
+//             width: 50px;
+//             cursor: pointer;
+//         }
+//         width: 90%;
+//         .navbar-items {
+//             display: flex;
+//             flex-direction:row;
+//             li.navbar-item {
+//                 cursor: pointer;
+//                 list-style: none;
+//                 padding: 10px;
+//                 margin: 10px;
+//                 font-size: 18px;
+//                 font-weight: 600;
+                
+//             }
+//             .navbar-item.--selected {
+//                 color: $secondary;
+//             }
+//         }
+//     }
+//     .right-pane {
+//         margin: auto;
+//     }
+// }
+

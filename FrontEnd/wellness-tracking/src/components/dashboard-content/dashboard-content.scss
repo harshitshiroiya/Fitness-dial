@@ -1,0 +1,27 @@
+.dashboard-content-container {
+    padding: 40px 20px;
+    height: 100%;
+    .dashboard-header {
+        display:flex;
+        font-weight:bold;
+        margin-bottom:3em;
+        font-size: 21px;
+    }
+    .categories-container {
+        .category-container {
+            border-bottom:1px solid lightgrey;
+            .category-title {
+                font-weight: bold;
+                display: flex;
+                margin: 20px 0px;
+            }
+            .video-tiles-container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+                margin-bottom: 15px;
+              }
+        }
+    }
+
+}
