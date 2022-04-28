@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const CONSTANTS = require("../config/constants");
 
 const userSchema = new Schema(
   {
@@ -14,16 +15,36 @@ const userSchema = new Schema(
       type: String,
       require: true,
     },
-    phone_number: {
-      type: Number,
-      require: true,
-    },
     password: {
       type: String,
     },
+    user_type: {
+      type: String,
+      enum: [
+        CONSTANTS.USER_TYPE.ADMIN,
+        CONSTANTS.USER_TYPE.CUSTOMER,
+        CONSTANTS.USER_TYPE.PROFESSIONAL,
+      ],
+      require: true,
+    },
+    customer_info: {
+      type: Schema.Types.ObjectId,
+      ref: CONSTANTS.MODELS.CUSTOMER_INFO,
+      default: null,
+    },
+    professional_info: {
+      type: Schema.Types.ObjectId,
+      ref: CONSTANTS.MODELS.PROFESSIONAL_INFO,
+      default: null,
+    },
+    admin_info: {
+      type: Schema.Types.ObjectId,
+      ref: CONSTANTS.MODELS.ADMIN_INFO,
+      default: null,
+    },
     activated: {
       type: Boolean,
-      default: false,
+      default: null,
     },
   },
   { timestamps: true }

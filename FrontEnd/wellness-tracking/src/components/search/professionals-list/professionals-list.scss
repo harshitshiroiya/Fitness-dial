@@ -1,0 +1,16 @@
+@import '../../../scss/variables.scss';
+.list-item-container {
+    display: flex;
+    align-items: center;
+    .view-profile {
+        text-decoration: underline;
+        cursor: pointer;
+        color: $primary;
+    }
+    .icons {
+        margin-left: 10em;
+        display: flex;
+        gap: 30px;
+        align-items: center;
+    }
+}

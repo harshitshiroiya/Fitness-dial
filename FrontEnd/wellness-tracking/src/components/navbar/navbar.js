@@ -8,13 +8,13 @@ import store from '../../store';
 import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarContent, SidebarFooter } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 
-function Navbar(props: any) {
+function Navbar(props ) {
     const [tabIndex, setTabIndex] = useState({ tab: 0, child: 0 });
     const [subMenuOpen, setSubMenuOpen] = useState(false);
     const tabs = props.tabs;
     const navigate = useNavigate();
 
-    const subMenuClick = (child: any, i: number, j: number) => {
+    const subMenuClick = (child , i , j ) => {
         setTabIndex({ tab: i, child: j });
         if (child.route === '/logout') {
             localStorage.removeItem('userDetails');
@@ -36,10 +36,10 @@ function Navbar(props: any) {
                     </div>
                 </SidebarHeader>
                 <SidebarContent>
-                    {tabs.map((tab: any, i: number) => {
+                    {tabs.map((tab , i ) => {
                         return !tab.children ? (<MenuItem key={tab.name} onClick={() => { setTabIndex({ tab: i, child: 0 }); navigate(tab.route); setSubMenuOpen(false) }} className={`navbar-item` + (i === tabIndex.tab ? ` --selected` : '')}>{tab.name}</MenuItem>) :
                             (<SubMenu open={subMenuOpen} title={tab.name} onClick={() => setSubMenuOpen(!subMenuOpen)}>
-                                {tab.children.map((child: any, j: number) => <MenuItem key={child.name} onClick={() => { subMenuClick(child, i, j) }} className={`navbar-item` + (i === tabIndex.tab && j === tabIndex.child ? ` --selected` : '')}>{child.name}</MenuItem>)}
+                                {tab.children.map((child , j ) => <MenuItem key={child.name} onClick={() => { subMenuClick(child, i, j) }} className={`navbar-item` + (i === tabIndex.tab && j === tabIndex.child ? ` --selected` : '')}>{child.name}</MenuItem>)}
                             </SubMenu>)
                     })}
 

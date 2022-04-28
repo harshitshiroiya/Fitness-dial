@@ -1,0 +1,18 @@
+runtime: nodejs14
+service: fitness-dial
+instance_class: F2
+
+env_variables:
+  PORT: "8080"
+  NODE_ENV: "logged"
+  MONGODB_URI: "mongodb+srv://anmgupta:GcVYg5qPZYfquC4d@cluster0.xyiy2.mongodb.net/dev?retryWrites=true&w=majority"
+  SESSION_MAXAGE: "1800000"
+  SENDGRID_API_KEY: "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"
+  SENDER_MAIL: "anmgupta@iu.edu"
+  CLIENT_SIDE_URL: "fitness-dial.web.app"
+  REDIS_HOST: "redis-15796.c228.us-central1-1.gce.cloud.redislabs.com"
+  REDIS_PORT: "15796"
+  REDIS_PASSWORD: "TB9f6ArdfMNUVnNBfqLxat5QXwYxpqyI"
+  SESSION_SECRET: "ca918e68e284480aaa4315effb2695cc518961bdc886bd0cf5ad03f98d758164"
+  GCLOUD_PROJECT_ID: "vk-services-prod"
+  BUCKET_NAME: "fitnessdial-professional-videos"

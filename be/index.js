@@ -6,12 +6,11 @@ const routes = require("./routes/routes");
 const CONFIG = require("./config/index");
 const logger = require("./utils/logger");
 const mongodb = require("./services/mongodb");
-// const session = require("./middleware/session");
+const session = require("./middleware/session");
 
 const app = express();
 
-// app.set("trust proxy", 1);
-// app.use(session);
+app.use(session);
 
 app.use(bodyParser.json());
 app.use(

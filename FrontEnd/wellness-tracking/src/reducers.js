@@ -1,6 +1,6 @@
 import { getUserDetails } from './services/user.service';
 import { combineReducers } from 'redux';
-const userDetails = (state: any = {userDetails:getUserDetails()}, action: any) => {
+const userDetails = (state  = {userDetails:getUserDetails()}, action ) => {
     switch (action.type) {
         case 'SET_USER':
             state.userDetails = action.userDetails;
@@ -10,6 +10,8 @@ const userDetails = (state: any = {userDetails:getUserDetails()}, action: any) =
 
     }
 }
+
+
 
 
 export const reducer = combineReducers({ userDetails });

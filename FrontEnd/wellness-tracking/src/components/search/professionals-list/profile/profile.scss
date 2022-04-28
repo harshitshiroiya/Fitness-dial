@@ -1,0 +1,24 @@
+.professional-profile {
+    height: 100vh;
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+        width:100%;
+        .avatar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .profile-info {
+            margin: 4em 7em;
+            .prop {
+                margin-bottom: 2em;
+            }
+        }
+        .profile-name {
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+    }
+}

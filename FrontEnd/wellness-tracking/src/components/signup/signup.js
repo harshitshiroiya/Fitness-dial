@@ -1,4 +1,4 @@
-import { Button, Radio, TextField, Alert } from "@mui/material";
+import { Button, Radio, TextField, Alert, AlertColor } from "@mui/material";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import './signup.scss';
 import { signUp } from "../../services/user.service";
+import { createUser } from "../messages/chat-app/chat-engine";
 
 export function Signup() {
     const [user_type, setUserType] = useState('Customer');
@@ -13,9 +14,9 @@ export function Signup() {
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [phone_number, setPhone] = useState('');
-    const [emailVerificationMsg, setEmailVerificationMsg] = useState('');
+    const [emailVerificationMsg, setEmailVerificationMsg] = useState({msg:'',status:''});
     const navigate = useNavigate();
-    const registerUser = async (e: any) => {
+    const registerUser = async (e ) => {
         e.preventDefault()
         const user = {
             first_name,
@@ -26,10 +27,11 @@ export function Signup() {
         }
         try {
             await signUp(user);
-            setEmailVerificationMsg('An email has been sent to you. Please verify your email.');
+            createUser({...user, username:first_name, secret: email.split('@')[0]+"@"+first_name, custom_json:JSON.stringify(user) })
+            setEmailVerificationMsg({msg:'An email has been sent to you. Please verify your email.', status:'success'});
         }
-        catch (e) {
-            console.log(e)
+        catch (e ) {
+            setEmailVerificationMsg({msg:e.response.data.message, status:'error'});
         }
 
     }
@@ -37,15 +39,15 @@ export function Signup() {
     return (
         <div className="signup-container">
             <div className="signup-form">
-                {emailVerificationMsg &&
-                    <Alert style={{ width: "50%", margin: "auto" }} severity="success">{emailVerificationMsg}</Alert>
+                {emailVerificationMsg.msg &&
+                    <Alert style={{ width: "50%", margin: "auto" }} severity={emailVerificationMsg.status}>{emailVerificationMsg.msg}</Alert>
                 }
-                {!emailVerificationMsg && <form onSubmit={registerUser}>
+                {!emailVerificationMsg.msg && <form onSubmit={registerUser}>
                     <div className="signup-inputs">
                         <div className="heading">Sign up here</div>
-                        <TextField required size="small" id="first_name_signup" onChange={(e:any) => setFirstName(e.target.value)} className="text-input" variant="outlined" label="First Name"></TextField>
-                        <TextField size="small" id="last_name_signup" onChange={(e:any) => setLastName(e.target.value)} className="text-input" variant="outlined" label="Last Name"></TextField>
-                        <TextField required size="small" type="email" id="email_signup" onChange={(e:any) => setEmail(e.target.value)} className="text-input" variant="outlined" label="Email"></TextField>
+                        <TextField required size="small" id="first_name_signup" onChange={(e ) => setFirstName(e.target.value)} className="text-input" variant="outlined" label="First Name"></TextField>
+                        <TextField size="small" id="last_name_signup" onChange={(e ) => setLastName(e.target.value)} className="text-input" variant="outlined" label="Last Name"></TextField>
+                        <TextField required size="small" type="email" id="email_signup" onChange={(e ) => setEmail(e.target.value)} className="text-input" variant="outlined" label="Email"></TextField>
                         <PhoneInput containerStyle={{ margin: "1em" }} onChange={e => setPhone(e)}></PhoneInput>
                         {/* <TextField size="small" id="phone_number_signup" onChange={e=>setPhone(e.target.value)} type="number" className="text-input" variant="outlined" label="Phone"></TextField> */}
                         <p>Please choose the option that describes you the best:</p>

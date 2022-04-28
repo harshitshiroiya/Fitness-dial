@@ -1,0 +1,1 @@
+export const categories = ['All','WeightTraining', 'Yoga', 'Zumba', 'MentalHealth','Dietician'];
